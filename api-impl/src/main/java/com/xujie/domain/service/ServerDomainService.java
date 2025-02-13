@@ -24,14 +24,15 @@ public class ServerDomainService {
 
     /**
      * 通过用户全地址组合 与 可用地址组合 进行前缀匹配校验是否可用
+     *
      * @param userRequestBO
      * @return
      */
-    public Boolean isAvailable(UserRequestBO userRequestBO){
+    public Boolean isAvailable(UserRequestBO userRequestBO) {
         Long userId = userRequestBO.getUserId();
         // 通过用户ID获取其可用区域
         List<UserArea> userAvailableAreas = userAreaService.getUserAvailableAreas(userId);
-        if(ObjectUtils.isEmpty(userAvailableAreas)) {
+        if (ObjectUtils.isEmpty(userAvailableAreas)) {
             return false;
         }
         // 获取用户可用所有地区
@@ -42,16 +43,15 @@ public class ServerDomainService {
         String city = userRequestBO.getCity();
 
         // 用户当前地址全组合
-        String userFullLocation = String.join("-",countryCode,province,city);
-        Predicate<Areas> check = (item) ->{
+        String userFullLocation = String.join("-", countryCode, province, city);
+        Predicate<Areas> check = (item) -> {
             // 通过前缀匹配进行检验
             String fullLocation = String.join("-", item.getCountryCode(), item.getProvince(), item.getCity());
             return StringUtils.startsWith(fullLocation, userFullLocation);
         };
         // 扩展....
-        return ares.stream().allMatch(check);
+        return ares.stream().anyMatch(check);
     }
-
 
 
 }
