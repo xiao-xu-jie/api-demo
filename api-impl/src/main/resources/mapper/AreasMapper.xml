@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xujie.infra.mapper.AreasMapper">
+  <resultMap id="BaseResultMap" type="com.xujie.infra.entity.Areas">
+    <!--@mbg.generated-->
+    <!--@Table areas-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="country_code" jdbcType="VARCHAR" property="countryCode" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, country_code, province, city, district, update_time, create_time, is_delete
+  </sql>
+</mapper>

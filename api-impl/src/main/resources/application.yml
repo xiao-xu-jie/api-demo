@@ -1,0 +1,35 @@
+server:
+  port: 8899
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/api-demo?useSSL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 20
+      min-idle: 20
+      max-active: 100
+      max-wait: 60000
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 123456
+        allow: 127.0.0.1
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+  mapper-locations: classpath:mapper/**.xml
+  type-aliases-package: com.xujie.**.infra.entity
+  global-config:
+    db-config:
+      logic-delete-field: is_delete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: assign_id
