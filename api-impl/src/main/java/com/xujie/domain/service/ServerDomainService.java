@@ -47,7 +47,8 @@ public class ServerDomainService {
         Predicate<Areas> check = (item) -> {
             // 通过前缀匹配进行检验
             String fullLocation = String.join("-", item.getCountryCode(), item.getProvince(), item.getCity());
-            return StringUtils.startsWith(fullLocation, userFullLocation);
+            return StringUtils.startsWith(fullLocation, userFullLocation)
+                    || StringUtils.startsWith(userFullLocation, fullLocation);
         };
         // 扩展....
         return ares.stream().anyMatch(check);

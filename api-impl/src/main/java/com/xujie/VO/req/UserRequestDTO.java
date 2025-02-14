@@ -30,7 +30,6 @@ public class UserRequestDTO {
     /**
      * 市
      */
-    @NotEmpty(message = "请输入市地区")
     private String city;
     /**
      * 区、街道（可选）
