@@ -1,5 +1,6 @@
 # api-demo
-XGRIDS编程题
+
+编程题
 
 ## 运行环境
 
@@ -21,21 +22,77 @@ java --db.username=root --db.password=123456 -jar api-demo.jar
 
 请求方式：Post
 
+请求格式：
+
 ```
 {
-  "userId": 1,			//必填 用户id
-  "countryCode": "",	//必填 国家编号
-  "province": "",		//必填 省 如：四川省
-  "city": "",			//必填 市 如：广安市
+  "userId": ,			//必填 用户id Long
+  "countryCode": "",	//必填 国家编号 
+  "province": "",		//必填 省 如：xx省
+  "city": "",			//必填 市 如：xx市
   "district": ""		//可选 扩展字段 
 }
 ```
 
-数据库中测试数据：
 
-用户 ID ： 1
 
-可用区域：CN 四川省 成都市
+测试样例：
 
-CN 四川省 广安市
+```
+请求体：
+{
+  "userId": 1,
+  "countryCode": "CN",
+  "province": "广东省",
+  "city": "",
+  "district": ""
+}
+响应结果：
+{
+  "code": 200,
+  "message": "用户可用",
+  "data": true
+}
+
+```
+
+
+
+```
+请求体：
+{
+  "userId": 1,			 
+  "countryCode": "CN",
+  "province": "浙江省",
+  "city": "杭州市",
+  "district": ""
+}
+响应结果：
+{
+  "code": 200,
+  "message": "用户可用",
+  "data": true
+}
+
+```
+
+```
+请求体：
+{
+  "userId": 1,			 
+  "countryCode": "CN",
+  "province": "浙江省",
+  "city": "宁波市",
+  "district": ""
+}
+响应结果：
+{
+  "code": 200,
+  "message": "用户在该区域无法使用",
+  "data": false
+}
+
+```
+
+
 
